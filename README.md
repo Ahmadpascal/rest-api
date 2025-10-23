@@ -11,3 +11,7 @@ Aplikasi ini memungkinkan pengguna untuk:
 - Mengedit tugas  
 - Menghapus tugas
 
+## 📸 Web UI Preview
+![UI_PREVIEW](Image%20result/UI_1.png)
+![UI_PREVIEW](Image%20result/UI_2.png)
+
