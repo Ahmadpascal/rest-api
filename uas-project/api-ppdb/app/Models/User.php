@@ -1,0 +1,52 @@
+<?php
+
+namespace App\Models;
+
+// use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
+use Laravel\Sanctum\HasApiTokens;
+use Spatie\Permission\Traits\HasRoles;
+use Filament\Panel;
+
+
+class User extends Authenticatable
+{
+    use HasApiTokens, HasRoles, HasFactory, Notifiable;
+
+    protected $fillable = [
+        'name',
+        'email',
+        'password',
+    ];
+
+    protected $hidden = [
+        'password',
+        'remember_token',
+    ];
+
+    protected function casts(): array
+    {
+        return [
+            'email_verified_at' => 'datetime',
+            'password' => 'hashed',
+        ];
+    }
+
+    public function canAccessPanel(Panel $panel): bool
+    {
+        // return $this->hasRole('admin');
+            dd(
+        'DIPANGGIL',
+        $panel->getId(),
+        $this->email,
+        $this->getRoleNames()
+    );
+    }
+
+    public function ppdb()
+    {
+        return $this->hasOne(Ppdb::class);
+    }
+}
